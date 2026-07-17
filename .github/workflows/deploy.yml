@@ -22,10 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # No package-lock.json committed yet — using npm install.
-      # After running `npm install` locally, commit the lockfile and
-      # switch this to `npm ci` (and add `cache: npm` above) for faster builds.
-      - run: npm install --no-audit --no-fund
+          cache: npm
+      - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
